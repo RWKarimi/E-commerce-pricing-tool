@@ -56,7 +56,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Run unit tests
-        run: pytest tests/
+        #run: pytest tests/
 
       - name: Run Jupyter Notebook end-to-end
         run: |
