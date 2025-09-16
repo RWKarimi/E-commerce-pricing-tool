@@ -58,7 +58,7 @@ jobs:
       - name: Run Jupyter Notebook end-to-end
         run: |
           pip install pytest nbconvert papermill
-          papermill notebooks/E_commerce_project.ipynb notebooks/output.ipynb
+          papermill E_commerce_project.ipynb output.ipynb
 
       - name: Run unit tests
         run: pytest tests/
