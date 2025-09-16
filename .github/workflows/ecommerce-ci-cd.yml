@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.tx
 
   # ------------------------
   # 2. TEST JOB
@@ -53,15 +53,16 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Run unit tests
-        #run: pytest tests/
+            ${{ runner.os }}-pi
 
       - name: Run Jupyter Notebook end-to-end
         run: |
-          pip install nbconvert papermill
-          papermill notebooks/model.ipynb notebooks/output.ipynb
+          pip install pytest nbconvert papermill
+          papermill notebooks/E_commerce_project.ipynb notebooks/output.ipynb
+
+      - name: Run unit tests
+        run: pytest tests/
+          
 
   # ------------------------
   # 3. DEPLOY JOB
