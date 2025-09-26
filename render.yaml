@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: price-landscape-api
+    env: docker
+    rootDir: api
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: OUT_DIR
+        value: /app/price_landscape_outputs
+      - key: ALLOW_ORIGINS
+        value: https://price-frontend.onrender.com, http://localhost:5173
+    disk:
+      name: outputs
+      mountPath: /app/price_landscape_outputs
+      sizeGB: 1
+
+  - type: static
+    name: price-frontend
+    env: static
+    rootDir: price-frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://price-landscape-api.onrender.com
