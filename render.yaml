@@ -15,7 +15,7 @@ services:
       mountPath: /app/price_landscape_outputs
       sizeGB: 1
 
-  - type: static
+  - type: web
     name: price-frontend
     env: static
     rootDir: price-frontend
