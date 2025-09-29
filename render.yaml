@@ -10,10 +10,6 @@ services:
         value: /app/price_landscape_outputs
       - key: ALLOW_ORIGINS
         value: https://price-frontend.onrender.com, http://localhost:5173
-    disk:
-      name: outputs
-      mountPath: /app/price_landscape_outputs
-      sizeGB: 1
 
   - type: web
     name: price-frontend
