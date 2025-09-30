@@ -1,52 +1,54 @@
 # Price Optimization Tool
 
+![Price Optimization](price_landscape_outputs/Predictor%20Pricing.jpeg)
+
+### Project Collaboration
+
+- [Notion](https://www.notion.so/270e26877fdd815a9017da739a7c8dd7?v=270e26877fdd81c7a17a000c18496f82&source=copy_link) served as our central hub for organizing tasks and resources.  
+- We used it to share notes and useful links in one accessible space.  
+- Documented meeting notes and decisions for easy reference. 
+- Tracked deadlines and assigned responsibilities through task boards.  
+- Allowed real-time collaboration, reducing miscommunication and delays.
+
+### Project Authors
+1. [Lewis Mbugua]
+2. [Elizabeth Ogutu]
+3. [Hafsa M. Aden]
+4. [Ryan Karimi]
+5. [Harrison Kuria]
+6. [Rose Muthini]
+
 ## Business Understanding
+*At what price should one sell a product to remain competitive while still making a profit?*
 
 ### Problem Statement:
-- As sellers, setting the right price is crucial to staying competitive and profitable. While we rely on our operational costs, desired margins, and supplier agreements to set prices, what’s often missing is visibility into how competitors are pricing similar products in the market. Without this market context, we risk overpricing (losing customers to cheaper alternatives) or underpricing (cutting into our own profits unnecessarily).
+- Pricing is one of the most critical decisions for any seller. While costs, margins, and supplier agreements guide internal pricing, what’s often missing is visibility into how competitors price similar products. Without this context, sellers face two key risks:
+    - Overpricing → losing customers to cheaper alternatives.
+    - Underpricing → cutting into profits unnecessarily.
 
-- New sellers entering online marketplaces often struggle with:
+- New sellers entering marketplaces often struggle with:
     - Price variability – Similar products can vary widely in price (e.g., KSh 499 vs KSh 8,900).
     - Discount strategy – Discounts strongly influence buyers, but the "sweet spot" is unclear.
-    - Category saturation – Popular categories are crowded, making it hard for new sellers to compete.
-    - Customer trust – Ratings and reviews play a role beyond pricing.
 
-- This project aims to bridge that gap by providing data-driven insights from market listings such as product categories, ratings, reviews, and discounts, so sellers can benchmark against competitors and make smarter pricing decisions. The goal is not to replace existing cost-based pricing strategies, but to complement them with real-time market analysis that helps sellers price confidently and competitively.
-
-### Why This Topic:
-- In today’s highly competitive market landscape, pricing transparency for sellers has become essential for staying competitive and driving sales.
-- Pricing is one of the strongest levers for profitability, and even small adjustments can significantly impact revenue and customer perception.
-- This project empowers sellers to make informed, real-time pricing decisions based on market data rather than intuition, helping them remain competitive and maximize conversions. By optimizing prices, sellers can attract more customers while sustaining healthy profit margins.
-
-
-### Domain Focus: 
-- Competitive Pricing in Online Marketplaces (Pricing Analytics) 
-
-### Target Audience:
-- Marketplace Sellers & Vendors who want to track competitor pricing
-
-### Potential Impact: This tool can 
-- Help sellers price new products competitively from day one
-- Reduce the time sellers spend on manual competitor research
-- Increase sales conversions by ensuring listings are within market-accepted ranges
-
-### Reason for considering this project
-- The motivation is to empower sellers with a data-driven tool to compete fairly in a rapidly growing marketplace like Kenya.
-
-### Objective
-- Price Optimization – Predict competitive price ranges for new products.
-- Discount Insights – Quantify how discounts affect buying potential.
-- Trust Metrics – Identify how ratings and reviews impact sales success.
+### Objectives: 
+- This project aims to bridge that gap by providing data-driven insights from marketplace listings (e.g., product categories, ratings, reviews, discounts). By benchmarking against competitors, sellers gain real-time market information that complements their cost-based pricing strategies, enabling them to set prices that are both competitive and profitable.    
 
 ### Stakeholders
-- New Sellers (B2B Clients): Data-backed guidance on product selection & pricing.
+- New Sellers : Data-backed guidance on product selection & pricing.
 - Marketplace (Jumia): Gains from onboarding more sellers and improving customer experience.
 - Business Development Teams: Use insights to attract and support vendors.
 
+### Potential Impact: 
+- This tool can 
+    - Help sellers price new products competitively from day one
+    - Reduce the time sellers spend on manual competitor research
+    - Increase sales conversions by ensuring listings are within market-accepted ranges
 
 ## Data Understanding
 
-- The dataset consists of 1,999 product listings with 13 features (columns) including: 
+### Data Source
+- The dataset we worked with was scraped from [Jumia](https://www.jumia.co.ke/). 
+- It consist of 1,999 product listings with 13 features (columns) including: 
      - current_price → Current product price.
      - original_price → Price before discount
      - discount → Discount percentage
@@ -55,14 +57,55 @@
      - seller → Who is selling the item.
      - title → Product description.
 
-## Exploratory Data Analysis (EDA)
-- We performed detailed data cleaning & exploration, focusing on:
-    - Price distribution across categories.
-    - Impact of discounts on product visibility.
-    - Category trends (Phones, Home & Office electronics, etc.).
-    - Customer ratings as indicators of trust and product success.
 
-EDA included visualizations with matplotlib and seaborn to highlight pricing trends, category performance, and rating distributions.
+### Data Cleaning
+- To prepare the dataset for analysis, we applied the following steps:  
+   - Removed duplicates: Many sellers list the same product multiple times.
+   - Handled missing values: Some products lacked ratings or discounts. Strategies included:
+       - Filling missing numeric values with averages.
+       - Dropping irrelevant text-only columns when not useful for modeling.
+   - Converted datatypes: Prices were stored as strings (KSh 499 → 499). Converted to integers.
+   - Created new features:
+       - discount_amount = original_price - current_price
+       - discount_ratio = % discount offered
+
+### Exploratory Data Analysis (EDA)
+- We explored the data to understand patterns and relationships in the data:
+    - Price distribution:
+         - Plotted Product prices across categories - Found that electronics (Phones, Tablets, Home & Office) have the widest price range.
+
+
+
+    - Impact of discounts on product visibility.
+         - Observed discounts up to 60%+.
+         - Products with moderate discounts (10–30%) performed better than those with extreme discounts.
+
+
+
+    - Category Analysis.
+         - Phone  & Tablets and Home Electronics dominate listings.
+         - Some categories are oversaturated, suggesting sellers should focus on niches within electronics.
+
+
+
+    - Customer ratings as indicators of trust and product success.
+         - Verified ratings strongly correlated with higher prices (premium products often get better reviews).
+         - Low-rated sellers struggled regardless of discounts.
+
+    -  Correlation Matrix
+         - Showed strong relationship between discount, current_price, and rating_number.
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Modeling
 
