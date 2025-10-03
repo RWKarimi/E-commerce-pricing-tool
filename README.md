@@ -4,19 +4,19 @@
 
 ### Project Collaboration
 
-- [Notion](https://www.notion.so/270e26877fdd815a9017da739a7c8dd7?v=270e26877fdd81c7a17a000c18496f82&source=copy_link) served as our central hub for organizing tasks and resources.  
-- We used it to share notes and useful links in one accessible space.  
-- Documented meeting notes and decisions for easy reference. 
-- Tracked deadlines and assigned responsibilities through task boards.  
-- Allowed real-time collaboration, reducing miscommunication and delays.
+- [Notion](https://www.notion.so/270e26877fdd815a9017da739a7c8dd7?v=270e26877fdd81c7a17a000c18496f82&source=copy_link) served as our central hub for organizing tasks and resources. We used it to:  
+      - Share notes and useful links in one accessible space.  
+      - Document meeting notes and decisions for easy reference. 
+      - Track deadlines and assigned responsibilities through task boards.  
+      - Enable real-time collaboration, reducing miscommunication and delays.
 
 ### Project Authors
 1. [Lewis Mbugua]
-2. [Elizabeth Ogutu]
-3. [Hafsa M. Aden]
-4. [Ryan Karimi]
+2. [Elizabeth Ogutu](https://www.linkedin.com/in/elizabeth-ogutu-36222b1a6/)
+3. [Hafsa M. Aden](https://www.linkedin.com/in/hafsa-m-aden-330451223/)
+4. [Ryan Karimi](https://www.linkedin.com/in/ryan-karimi-39a701326/)
 5. [Harrison Kuria]
-6. [Rose Muthini]
+6. [Rose Muthini](https://www.linkedin.com/in/syomiti-muthini-03849a153/)
 
 ## Business Understanding
 *At what price should one sell a product to remain competitive while still making a profit?*
@@ -58,7 +58,7 @@
      - title → Product description.
 
 
-### Data Cleaning
+### Data Preparation
 - To prepare the dataset for analysis, we applied the following steps:  
    - Removed duplicates: Many sellers list the same product multiple times.
    - Handled missing values: Some products lacked ratings or discounts. Strategies included:
@@ -69,7 +69,7 @@
        - discount_amount = original_price - current_price
        - discount_ratio = % discount offered
 
-### Exploratory Data Analysis (EDA)
+## Analysis Overview
 - We explored the data to understand patterns and relationships in the data:
     - Price distribution:
          - Plotted Product prices across categories - Found that electronics (Phones, Tablets, Home & Office) have the widest price range.
@@ -95,37 +95,73 @@
     -  Correlation Matrix
          - Showed strong relationship between discount, current_price, and rating_number.
 
+- For a detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb]()
 
+# Key Insights
 
+- We created an interactive Tableau dashboard to present the results of the analysis in a clear and accessible way. Below are some of the findings:
+     - Sellers should avoid extreme discounts; moderate discounts (10–30%) balance visibility and profitability.
+     - Ratings matter: Products with higher verified ratings perform better, even at higher prices.
+     - Phones & Electronics are profitable but crowded, niche categories offer better opportunities for new sellers.
+     - A predictive approach to pricing reduces risk for new sellers entering competitive markets.
 
-
-
-
-
-
-
+[View the Tableau Dashboard](INSERT TABLEAU LINK)
 
 
 
 ## Modeling
 
 - The project applied machine learning models to:
-    - Predict optimal product prices based on features like discount, category, and ratings.
-    - Recommend product categories with higher sales potential.
+    - Predict optimal product prices.
+    - Provide sellers with recommendations on optimal pricing.
+
+- Target Variable:current_price (what the customer pays).
+- Features: original_price, discount, main_category, rating_number, verified_ratings, etc.
+
+- Model used:
+   - Linear Regression: Simple baseline model for price prediction.
+   - Decision Tree / Random Forest: Captures non-linear relationships (e.g., how discounts interact with categories).
+   - Gradient Boosting: More advanced model for better accuracy.
 
 - We experimented with multiple models (e.g., regression-based and classification-based approaches), evaluated performance, and selected the one that balanced accuracy with interpretability.
 
-## Deployment & Deliverables
-### Deliverables:
+- Evaluation matrix: 
+   - R² Score: Measures how well the model explains variation in price.
+   - MAE (Mean Absolute Error): Measures average difference between predicted and actual prices.
 
-- A Jupyter Notebook with full workflow: data cleaning → EDA → modeling → insights.
-- Predictive model for price optimization.
-- Business-friendly insights report, including:
-    - Price ranges by category
-    - Discount impact on sales
-    - Rating influence on product success
+- Results
+    - Tree-based models (Random Forest, Gradient Boosting) outperformed linear models.
+    - Predictions were accurate enough to recommend competitive price bands by category.
 
-### Deployment (Future Work):
-- Package the model into an API or web dashboard for sellers.
-- Automate monthly updates using new e-commerce listings.
-- Integrate results into marketplace onboarding tools for vendors.
+
+## Deployment
+
+- The project was deployed as a Flask web app and hosted on Render.
+- For the Front end, we created a simple website where people can explore the project. The site has diffrent pages:
+    - Home → welcoming page with project overview.
+    - Data → a page describing the dataset used.
+    - Research → key findings and insights.
+    - Team → information about the contributors.
+- There’s also a prediction form where a user can enter product details and instantly see the predicted price.
+
+- The backend uses a Random Forest model trained on our dataset. The outcome is a live, user-friendly web app that makes predictions in real time.
+
+🔗 [Explore the Price Predictor Tool](https://price-prediction-model-user-interface.onrender.com/)
+
+
+## Conclusion
+- This project shows ...... from exploring the dataset and extracting insights, to training a robust predictive model, and finally transforming it into a live, user-friendly web app.
+- The result is a practical tool that allows anyone to input product details and instantly receive a predicted price, bridging the gap between data and real-world application. This highlights  can support better decision-making in e-commerce, such as pricing strategies, deal evaluation, and customer awareness.
+
+
+## Conclusion  
+- This project demonstrates the end-to-end process from exploring the dataset and extracting insights, to training a robust predictive model, and finally transforming it into a live, user-friendly web app.  
+- The result is a practical tool that allows anyone to input product details and instantly receive a predicted price, effectively bridging the gap between data and real-world application. It also shows how machine learning can support better decision-making in e-commerce, such as pricing strategies, deal evaluation, and customer awareness.  
+
+### Future Work
+- While the project is fully functional, there’s room to expand and improve:
+   - Extend beyond price prediction to demand forecasting or profit margin estimation.
+   - Incorporate more features like brand popularity, seasonal effects, or customer demographics.
+
+- In summary, this project is not just about predicting prices, it’s about showing how data can be transformed into real-world tools that empower smarter decisions in e-commerce.  
+   
