@@ -105,7 +105,7 @@
      - Phones & Electronics are profitable but crowded, niche categories offer better opportunities for new sellers.
      - A predictive approach to pricing reduces risk for new sellers entering competitive markets.
 
-[View the Tableau Dashboard](INSERT TABLEAU LINK)
+[View the Tableau Dashboard](https://public.tableau.com/app/profile/elizabeth.ogutu/viz/Booktwo_17595891616540/Dashboard1?publish=yes)
 
 
 
