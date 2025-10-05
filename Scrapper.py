@@ -15,7 +15,7 @@ from datetime import datetime
 headers = {"User-Agent": "Mozilla/5.0"}
 os.makedirs("Data", exist_ok=True)
 CSV_PATH = "Data/Shorten_Scraped_Data.csv"
-MAX_PAGES = 50  # You can increase this for more pages
+MAX_PAGES = 1  # You can increase this for more pages
 
 
 # --- Helper function to scrape product details ---
