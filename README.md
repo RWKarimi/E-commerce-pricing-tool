@@ -15,7 +15,7 @@
 2. [Elizabeth Ogutu](https://www.linkedin.com/in/elizabeth-ogutu-36222b1a6/)
 3. [Hafsa M. Aden](https://www.linkedin.com/in/hafsa-m-aden-330451223/)
 4. [Ryan Karimi](https://www.linkedin.com/in/ryan-karimi-39a701326/)
-5. [Harrison Kuria]
+5. [Harrison Kuria](https://www.linkedin.com/in/harrison-kuria-md-a35487a4/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 6. [Rose Muthini](https://www.linkedin.com/in/syomiti-muthini-03849a153/)
 
 ## Business Understanding
@@ -71,31 +71,100 @@
 
 ## Analysis Overview
 - We explored the data to understand patterns and relationships in the data:
-    - Price distribution:
-         - Plotted Product prices across categories - Found that electronics (Phones, Tablets, Home & Office) have the widest price range.
+
+### Price distribution:
+- Plotted Product prices across categories - Found that electronics (Phones, Tablets, Home & Office) have the widest price range.
 
 
 
-    - Impact of discounts on product visibility.
-         - Observed discounts up to 60%+.
-         - Products with moderate discounts (10–30%) performed better than those with extreme discounts.
+### Impact of discounts on product visibility.
+
+- a) [Relationship between original price & discount percentage](Images/relationship_between_original_price_and_discount_percentage.png)
+
+     - The correlation between product price and discount percentage is very weak (0.0758), indicating no strong link between higher prices and higher discounts. This suggests that discount strategies are largely independent of product price in this dataset.
+
+- b) [Discount by Product Category](Images/Discount%20by%20Product%20category.png)
+
+     - Gaming and Phones & Tablets show the highest average discounts (40%+), likely due to strong competition and frequent model updates.
+     - Groceries have the lowest discounts, reflecting their smaller profit margins.
+     - Other categories like Fashion, Computing, and Health & Beauty maintain moderate discounts (20–40%), suggesting similar pricing strategies across these segments.
+
+- c) [Discount by price range](Images/discount_by_price_range.png)
+     - Discounts remain fairly consistent across all price ranges. Whether products are low, mid, or high priced, they receive similar discount percentages, which is unexpected, as higher-priced items are often assumed to have larger discounts.
+
+- d) [Discount by Ratings](Images/discount_by_ratings.png)
 
 
 
-    - Category Analysis.
-         - Phone  & Tablets and Home Electronics dominate listings.
-         - Some categories are oversaturated, suggesting sellers should focus on niches within electronics.
+#### Summary:
+- The analysis shows that discount strategies are largely independent of product price, with consistent discount patterns across most price ranges and categories. 
+- Categories like Gaming and Phones & Tablets receive the highest discounts, likely due to competition and frequent model updates, while Groceries show the lowest. 
+- Overall, discounts do not appear strongly influenced by either product price or customer ratings.
+
+
+### Category Analysis.
+
+- We assessed product competitiveness within each category, defining a competitive product as one that is priced at or below the category’s median price and has a rating of 4.0 or higher.
+
+This approach highlights products that are both affordable and well-rated, offering insight into which categories have the strongest balance between price and customer satisfaction.
+
+| Main Category             | Competitive (%) |
+|----------------------------|-----------------|
+| Grocery                    | 47.06 |
+| Computing                  | 32.67 |
+| Sporting Goods             | 31.25 |
+| Automobile                 | 29.73 |
+| Gaming                     | 28.57 |
+| Home & Office              | 28.17 |
+| Health & Beauty            | 26.51 |
+| Industrial & Scientific    | 26.09 |
+| Baby Products              | 23.08 |
+| Toys & Games               | 19.51 |
+| Electronics                | 18.54 |
+| Pet Supplies               | 18.18 |
+| Garden & Outdoors          | 16.28 |
+| Fashion                    | 14.25 |
+| Phones & Tablets           | 13.64 |
+| Books, Movies and Music    | 12.28 |
+| Musical Instruments        | 0.00 |
+
+- Grocery products are the most competitive (47%), suggesting that nearly half of grocery items are both affordable and well-rated (likely due to consistent consumer demand and pricing stability.)
+
+- Computing, Sporting Goods, and Automobile categories also perform well, with around 30% of products meeting the competitive criteria.
+
+Fashion, Phones & Tablets, and Books, Movies & Music have the lowest shares of competitive products, indicating higher prices or lower customer ratings in these segments.
+
+Overall, competitiveness varies widely across categories, showing that strong performance (good price + good ratings) is not uniform across product types.
 
 
 
-    - Customer ratings as indicators of trust and product success.
-         - Verified ratings strongly correlated with higher prices (premium products often get better reviews).
-         - Low-rated sellers struggled regardless of discounts.
 
-    -  Correlation Matrix
-         - Showed strong relationship between discount, current_price, and rating_number.
 
-- For a detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb]()
+
+
+
+
+### Customer ratings as indicators of trust and product success.
+- Verified ratings strongly correlated with higher prices (premium products often get better reviews).
+- Low-rated sellers struggled regardless of discounts.
+
+
+
+
+
+
+
+
+### Correlation Matrix
+- The analysis shows a strong positive correlation between current and original prices, as current prices are derived from discounts on original prices. 
+- Discounts, however, show weak influence on price, suggesting they serve more as marketing tools than true price drivers. 
+- There’s no clear link between price and ratings, indicating that expensive products don’t necessarily receive better reviews. 
+- While discounted products may attract slightly more ratings, the effect is minimal. As expected, products with more reviews tend to have slightly higher average ratings.
+
+[Correlation between Numeric Variables](Images/correlation_matrix.png)
+
+
+- For more detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb notebook]()
 
 # Key Insights
 
@@ -107,7 +176,7 @@
 
 [View the Tableau Dashboard](https://public.tableau.com/app/profile/elizabeth.ogutu/viz/Booktwo_17595891616540/Dashboard1?publish=yes)
 
-
+[Dashboard](Images\Tableau.png)
 
 ## Modeling
 
@@ -137,7 +206,7 @@
 ## Deployment
 
 - The project was deployed as a Flask web app and hosted on Render.
-- For the Front end, we created a simple website where people can explore the project. The site has diffrent pages:
+- For the Frontend, we created a simple site where people can explore the project. The site has diffrent pages:
     - Home → welcoming page with project overview.
     - Data → a page describing the dataset used.
     - Research → key findings and insights.
@@ -146,12 +215,18 @@
 
 - The backend uses a Random Forest model trained on our dataset. The outcome is a live, user-friendly web app that makes predictions in real time.
 
-🔗 [Explore the Price Predictor Tool](https://price-prediction-model-user-interface.onrender.com/)
+🔗 [The tool is live and accessed here](https://price-prediction-model-user-interface.onrender.com/). You can explore the tool, input a product name and view competitor based pricing insughts.
 
+### User Feedback
 
-## Conclusion
-- This project shows ...... from exploring the dataset and extracting insights, to training a robust predictive model, and finally transforming it into a live, user-friendly web app.
-- The result is a practical tool that allows anyone to input product details and instantly receive a predicted price, bridging the gap between data and real-world application. This highlights  can support better decision-making in e-commerce, such as pricing strategies, deal evaluation, and customer awareness.
+- To gather user insights, we shared a short questionnaire with small business owners after they explored the deployed tool.
+- The goal was to understand:
+     - Whether the tool is helpful for their pricing decisions
+     - If it solves their challenge of knowing competitor prices
+     - What improvements or extra features they would like
+
+- You can view or take the [Feedback questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSdArpv26kCa1xGI-okd1yfXM09QXm3YANLZz9grddRjFCDa0g/viewform?usp=preview) here:
+
 
 
 ## Conclusion  
@@ -163,5 +238,6 @@
    - Extend beyond price prediction to demand forecasting or profit margin estimation.
    - Incorporate more features like brand popularity, seasonal effects, or customer demographics.
 
-- In summary, this project is not just about predicting prices, it’s about showing how data can be transformed into real-world tools that empower smarter decisions in e-commerce.  
-   
+- In summary, this project goes beyond predicting prices as it demonstrates how data can be transformed into practical, real-world tools that empower smarter decision-making in e-commerce.
+  - A summarized presentation of this project is available [here]()
+.
