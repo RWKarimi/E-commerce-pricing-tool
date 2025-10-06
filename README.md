@@ -79,20 +79,20 @@
 
 ### Impact of discounts on product visibility.
 
-- a) [Relationship between original price & discount percentage](Images/relationship_between_original_price_and_discount_percentage.png)
+- a) ![Relationship between original price & discount percentage](Images/relationship_between_original_price_and_discount_percentage.png)
+
 
      - The correlation between product price and discount percentage is very weak (0.0758), indicating no strong link between higher prices and higher discounts. This suggests that discount strategies are largely independent of product price in this dataset.
 
-- b) [Discount by Product Category](Images/Discount%20by%20Product%20category.png)
-
+- b) ![Discount by Product Category](Images/Discount%20by%20Product%20category.png)
      - Gaming and Phones & Tablets show the highest average discounts (40%+), likely due to strong competition and frequent model updates.
      - Groceries have the lowest discounts, reflecting their smaller profit margins.
      - Other categories like Fashion, Computing, and Health & Beauty maintain moderate discounts (20–40%), suggesting similar pricing strategies across these segments.
 
-- c) [Discount by price range](Images/discount_by_price_range.png)
+- c) ![Discount by Price Range](Images/discount_by_price_range.png)
      - Discounts remain fairly consistent across all price ranges. Whether products are low, mid, or high priced, they receive similar discount percentages, which is unexpected, as higher-priced items are often assumed to have larger discounts.
 
-- d) [Discount by Ratings](Images/discount_by_ratings.png)
+- d) ![Discount by Ratings](Images/discount_by_ratings.png)
 
 
 
@@ -161,7 +161,7 @@ Overall, competitiveness varies widely across categories, showing that strong pe
 - There’s no clear link between price and ratings, indicating that expensive products don’t necessarily receive better reviews. 
 - While discounted products may attract slightly more ratings, the effect is minimal. As expected, products with more reviews tend to have slightly higher average ratings.
 
-[Correlation between Numeric Variables](Images/correlation_matrix.png)
+![Correlation between Numeric Variables](Images/correlation_matrix.png)
 
 
 - For more detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb notebook]()
@@ -176,32 +176,67 @@ Overall, competitiveness varies widely across categories, showing that strong pe
 
 [View the Tableau Dashboard](https://public.tableau.com/app/profile/elizabeth.ogutu/viz/Booktwo_17595891616540/Dashboard1?publish=yes)
 
-[Dashboard](Images\Tableau.png)
+![Dashboard](Images/Tableau.png)
 
-## Modeling
+## Modeling Overview
 
-- The project applied machine learning models to:
-    - Predict optimal product prices.
-    - Provide sellers with recommendations on optimal pricing.
+- Before building predictive models, the data was cleaned and preprocessed. Missing values were imputed, categorical variables were encoded, and numerical features were scaled to ensure consistency and improve model performance. The dataset was then split into training (80%) and testing (20%) subsets to evaluate how well each model generalizes to unseen data.
 
-- Target Variable:current_price (what the customer pays).
-- Features: original_price, discount, main_category, rating_number, verified_ratings, etc.
+### Models Developed
 
-- Model used:
-   - Linear Regression: Simple baseline model for price prediction.
-   - Decision Tree / Random Forest: Captures non-linear relationships (e.g., how discounts interact with categories).
-   - Gradient Boosting: More advanced model for better accuracy.
+- Several regression models were developed to predict the target variable based on product and pricing features:
+     - Linear Regression served as a baseline for performance comparison.
+     - K-Nearest Neighbors (KNN) Regressor captured local relationships in the data.
+     - Decision Tree Regressor modeled non-linear patterns and feature interactions.
+     - Random Forest Regressor leveraged multiple decision trees for better generalization.
+     - Neural Network (MLP Regressor) tested for its ability to model complex, non-linear relationships.
 
-- We experimented with multiple models (e.g., regression-based and classification-based approaches), evaluated performance, and selected the one that balanced accuracy with interpretability.
+- All models were trained using a consistent preprocessing pipeline built with ColumnTransformer and Pipeline, ensuring reproducibility and effecient feature handling.
 
-- Evaluation matrix: 
-   - R² Score: Measures how well the model explains variation in price.
-   - MAE (Mean Absolute Error): Measures average difference between predicted and actual prices.
+### Model Performance
 
-- Results
-    - Tree-based models (Random Forest, Gradient Boosting) outperformed linear models.
-    - Predictions were accurate enough to recommend competitive price bands by category.
+ - Initial model results showed the following trends:
+     - Linear Regression performed strongly, achieving an R² of 0.96, indicating a solid linear fit.
+     - KNN and Decision Tree achieved R² scores of 0.91 and 0.88 respectively, suggesting some overfitting or sensitivity to data structure.
+     - Neural Network showed moderate performance (R² of 0.87) but required longer training and did not converge fully.
+     - Random Forest delivered a high R² of 0.94, significantly reducing error and improving predictive stability.
+     
+### Model Optimization
 
+- To further improve accuracy, GridSearchCV was applied for hyperparameter tuning across three advanced models:
+     - Ridge Regression
+     - Lasso Regression
+     - Random Forest Regressor
+
+- Each model was fine-tuned using 3-fold cross-validation to identify best performing parameters.
+
+### Model Selection
+
+- Model performance was compared using the following metrics: 
+     - Mean Absolute Error (MAE)
+     - Mean Squared Error (MSE)
+     - Root Mean Squared Error (RMSE)
+     - R-squared (R²).
+
+| Model           | Mean Absolute Error (MAE) | Mean Squared Error (MSE) | Root Mean Squared Error (RMSE) | R-squared (R²) |
+| ----------------| ------------------------- | ------------------------ | ------------------------------ | -------------- |
+| Random Forest   | 285.90                    | 721,254                  | 849.27                         | 0.9923         |
+| Ridge Regression| 1001.57                   | 3,691,000                | 1921.20                        | 0.9606         |
+| Lasso Regression| 815.11                    | 3,692,944                | 1921.70                        | 0.9606         |
+
+
+- Interpretation: 
+     - The Random Forest Regressor emerged as the best-performing model achieving:
+         - MAE: 285.90
+         - MSE: 721,254
+         - R²: 0.99
+
+    - MAE measures the average difference between predicted and actual values (model’s predictions deviate by about 286 units on average).
+    - The Mean Squared Error (MSE) penalizes larger errors more heavily, indicating overall low prediction errors.
+    - R² = 0.99 means the model explains 99% of the variance in the target variable, making it the most accurate and robust choice for deployment.
+
+- Conclusion:
+     - Random Forest was selected as the final model and deployed due to its accuracy, reliability and performance.     
 
 ## Deployment
 
