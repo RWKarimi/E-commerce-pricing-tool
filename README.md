@@ -11,7 +11,7 @@
       - Enable real-time collaboration, reducing miscommunication and delays.
 
 ### Project Authors
-1. [Lewis Mbugua]
+1. [Lewis Mbugua](https://www.linkedin.com/in/lewis-karanja-950995312/)
 2. [Elizabeth Ogutu](https://www.linkedin.com/in/elizabeth-ogutu-36222b1a6/)
 3. [Hafsa M. Aden](https://www.linkedin.com/in/hafsa-m-aden-330451223/)
 4. [Ryan Karimi](https://www.linkedin.com/in/ryan-karimi-39a701326/)
@@ -195,7 +195,7 @@
      - Random Forest Regressor leveraged multiple decision trees for better generalization.
      - Neural Network (MLP Regressor) tested for its ability to model complex, non-linear relationships.
 
-- All models were trained using a consistent preprocessing pipeline built with ColumnTransformer and Pipeline, ensuring reproducibility and effecient feature handling.
+- All models were trained using a consistent preprocessing pipeline built with ColumnTransformer and Pipeline, ensuring reproducibility and efficient feature handling.
 
 ### Model Performance
 
@@ -254,7 +254,7 @@
 
 - The backend uses a Random Forest model trained on our dataset. The outcome is a live, user-friendly web app that makes predictions in real time.
 
-🔗 [The tool is live and accessed here](https://price-prediction-model-user-interface.onrender.com/). You can explore the tool, input a product name and view competitor based pricing insughts.
+🔗 [The tool is live and accessed here](https://ecommerce-price-optimizer.lovable.app/). You can explore the tool, input a product name and view competitor based pricing insughts.
 
 ### User Feedback
 
