@@ -70,43 +70,55 @@
        - discount_ratio = % discount offered
 
 ## Analysis Overview
-- We explored the data to understand patterns and relationships in the data:
+
+- We explored the dataset to understand patterns and relationships among products listed on Jumia Kenya, focusing on:
+     - pricing behavior
+     - discount strategies
+     - customer ratings, and category-level 
+     - competitiveness among products listed on Jumia Kenya.
+
+- The process involved four main steps: 
+     - data preparation
+     - visual exploration
+     - category-level analysis
+     - feature engineering.
 
 ### Price distribution:
-- Plotted Product prices across categories - Found that electronics (Phones, Tablets, Home & Office) have the widest price range.
-
+- To explore the relationship between original prices and discounts, a correlation analysis was conducted. The resulting correlation coefficient (0.08) indicates a very weak relationship between the two variables. 
+- This suggests that both low-priced and high-priced products are equally likely to receive discounts, meaning discount rates are not strongly influenced by a product’s original price.
 
 
 ### Impact of discounts on product visibility.
 
-- a) ![Relationship between original price & discount percentage](<Images/Relationship  Between Original price & Discount percentage.png>)
+- To understand how discounts differ across product price tiers, products were grouped into four ranges:
+     - Low (<1,000 KSh)
+     - Mid (1,000–5,000 KSh)
+     - High (5,000–10,000 KSh)
+     - Very High (>10,000 KSh)
+
+- Discount by Price Range
+     - Discounts remain fairly consistent across all price ranges.
+     - Whether products are low, mid, or high priced, they receive similar discount percentages, which is unexpected, as higher-priced items are often assumed to have larger discounts.
+
+- Discount by Product Category: 
+     - *Gaming* and *Phones & Tablets* show the highest average discounts (40%+) likely due to strong competition and frequent model updates.
+     - *Groceries* have the lowest discounts, reflecting their smaller profit margins.
+     - *Fashion*, *Computing*, and *Health & Beauty* maintain moderate discounts (20–40%), suggesting similar pricing strategies across these segments.
+
+- Summary:
+     - Discount strategies are largely independent of product price, with consistent discount patterns across most price ranges and categories. 
+     - *Gaming* and *Phones & Tablets* receive the highest discounts likely due to competition and frequent model updates, while *Groceries* show the lowest. 
+     - Overall discounts do not appear strongly influenced by either product price or customer ratings.
 
 
-     - The correlation between product price and discount percentage is very weak (0.0758), indicating no strong link between higher prices and higher discounts. This suggests that discount strategies are largely independent of product price in this dataset.
+### Product Competitiveness.
 
-- b) ![Discount by Product Category](Images/Discount%20by%20Product%20category.png)
-     - Gaming and Phones & Tablets show the highest average discounts (40%+), likely due to strong competition and frequent model updates.
-     - Groceries have the lowest discounts, reflecting their smaller profit margins.
-     - Other categories like Fashion, Computing, and Health & Beauty maintain moderate discounts (20–40%), suggesting similar pricing strategies across these segments.
+- To identify the best-value or “deal” products, we assessed competitiveness within each category. A product was considered competitive if:
+     - Its price was at or below the category’s median price, and
+     - It had a rating of 4.0 or higher.
 
-- c) ![Discount by Price Range](<Images/Discount by price range.png>)
-     - Discounts remain fairly consistent across all price ranges. Whether products are low, mid, or high priced, they receive similar discount percentages, which is unexpected, as higher-priced items are often assumed to have larger discounts.
+- This method highlights products that are both affordable and well-rated, revealing which categories offer the best balance between price and customer satisfaction.
 
-- d) ![Discount by Ratings](<Images/Discount by Ratings.png>)
-
-
-
-#### Summary:
-- The analysis shows that discount strategies are largely independent of product price, with consistent discount patterns across most price ranges and categories. 
-- Categories like Gaming and Phones & Tablets receive the highest discounts, likely due to competition and frequent model updates, while Groceries show the lowest. 
-- Overall, discounts do not appear strongly influenced by either product price or customer ratings.
-
-
-### Category Analysis.
-
-- We assessed product competitiveness within each category, defining a competitive product as one that is priced at or below the category’s median price and has a rating of 4.0 or higher.
-
-This approach highlights products that are both affordable and well-rated, offering insight into which categories have the strongest balance between price and customer satisfaction.
 
 | Main Category             | Competitive (%) |
 |----------------------------|-----------------|
@@ -128,53 +140,41 @@ This approach highlights products that are both affordable and well-rated, offer
 | Books, Movies and Music    | 12.28 |
 | Musical Instruments        | 0.00 |
 
-- Grocery products are the most competitive (47%), suggesting that nearly half of grocery items are both affordable and well-rated (likely due to consistent consumer demand and pricing stability.)
+- key Insights: 
+     - *Grocery* items are the most competitive (47%), showing strong affordability and consistent ratings.
+     - *Computing*, *Sporting Goods*, and *Automobile* categories follow closely (~30%).
+     - *Fashion*, *Phones & Tablets*, and *Books* & *Music* have the lowest competitiveness, likely due to higher prices or lower ratings.
 
-- Computing, Sporting Goods, and Automobile categories also perform well, with around 30% of products meeting the competitive criteria.
-
-Fashion, Phones & Tablets, and Books, Movies & Music have the lowest shares of competitive products, indicating higher prices or lower customer ratings in these segments.
-
-Overall, competitiveness varies widely across categories, showing that strong performance (good price + good ratings) is not uniform across product types.
-
-
-
-
-
-
-
-
-
-### Customer ratings as indicators of trust and product success.
-- Verified ratings strongly correlated with higher prices (premium products often get better reviews).
-- Low-rated sellers struggled regardless of discounts.
-
-
-
-
-
-
+- Overall, competitiveness varies widely across categories, showing that strong performance (good price + good ratings) is not uniform across product types.
 
 
 ### Correlation Matrix
-- The analysis shows a strong positive correlation between current and original prices, as current prices are derived from discounts on original prices. 
-- Discounts, however, show weak influence on price, suggesting they serve more as marketing tools than true price drivers. 
+- There is a strong positive correlation between current and original prices as current prices are derived from discounts.
+- Discounts shows weak influence on price, suggesting they serve more as marketing tools than true price drivers. 
 - There’s no clear link between price and ratings, indicating that expensive products don’t necessarily receive better reviews. 
 - While discounted products may attract slightly more ratings, the effect is minimal. As expected, products with more reviews tend to have slightly higher average ratings.
 
-![Correlation between Numeric Variables](<Images/Correlation Matrix.png>)
+
+- For more detailed breakdown of the analysis, see the full notebook: [Price_Optimization.ipynb]()
 
 
-- For more detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb]()
+### Visual Exploration
 
-# Key Insights
+- We created various charts to observe how price interacts with discounts, ratings, and the number of verified reviews:
+     - Relationship Between Original Price & Discount Percentage ![Relationship Between Original Price & Discount Percentage](Images/Relationship%20Between%20Original%20Price%20%26%20Discount%20Percentage.png)
+     - Discount by Price Range ![Discount by Price Range](Images/Discount%20by%20Price%20Range.png)
+     - Discount by Ratings ![Discount by Ratings](Images/Discount%20by%20Ratings.png)
+     - Correlation between Numeric Variables ![Correlation between Numeric Variables](Images/Correlation%20Matrix.png)
 
-- We created an interactive Tableau dashboard to present the results of the analysis in a clear and accessible way. Below are some of the findings:
-     - Sellers should avoid extreme discounts; moderate discounts (10–30%) balance visibility and profitability.
-     - Ratings matter: Products with higher verified ratings perform better, even at higher prices.
-     - Phones & Electronics are profitable but crowded, niche categories offer better opportunities for new sellers.
-     - A predictive approach to pricing reduces risk for new sellers entering competitive markets.
+### Dashboard Summary
 
-[View the Tableau Dashboard](https://public.tableau.com/app/profile/elizabeth.ogutu/viz/Booktwo_17595891616540/Dashboard1?publish=yes)
+- All findings were consolidated into an interactive [Tableau Dashboard](https://public.tableau.com/app/profile/elizabeth.ogutu/viz/Booktwo_17595891616540/Dashboard1?publish=yes) for quick exploration.
+
+- Below are some of the findings:
+     - Discounts are common but not price-dependent. Sellers may use them for visibility rather than clearing expensive stock.
+     - Ratings remain consistent across price ranges; quality perception doesn’t rise with price
+     - Electronics and Computing have the highest median prices; Grocery and Fashion are the most competitive.
+     - The generated watchlists help identify undervalued products suitable for promotion or bulk purchase
 
 ![Dashboard](Images/Tableau.png)
 
@@ -275,4 +275,5 @@ Overall, competitiveness varies widely across categories, showing that strong pe
 
 - In summary, this project goes beyond predicting prices as it demonstrates how data can be transformed into practical, real-world tools that empower smarter decision-making in e-commerce.
   - A summarized presentation of this project is available [here]()
-.
+
+
