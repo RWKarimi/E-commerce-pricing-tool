@@ -161,8 +161,12 @@
 ### Visual Exploration
 
 - We created various charts to observe how price interacts with discounts, ratings, and the number of verified reviews:
-     - Relationship Between Original Price & Discount Percentage ![Relationship Between Original Price & Discount Percentage](Images/Relationship%20Between%20Original%20Price%20%26%20Discount%20Percentage.png)
-     - Discount by Price Range ![Discount by Price Range](Images/Discount%20by%20Price%20Range.png)
+     - Relationship Between Original Price & Discount Percentage
+  ![Relationship Between Original Price & Discount Percentage](Images/Relationship%20Between%20Original%20Price%20%26%20Discount%20Percentage.png)
+
+     - Discount by Price Range
+  ![Discount by Price Range](Images/Discount%20by%20Price%20Range.png)
+
      - Discount by Ratings ![Discount by Ratings](Images/Discount%20by%20Ratings.png)
      - Correlation between Numeric Variables ![Correlation between Numeric Variables](Images/Correlation%20Matrix.png)
 
