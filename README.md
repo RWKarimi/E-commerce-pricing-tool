@@ -79,7 +79,7 @@
 
 ### Impact of discounts on product visibility.
 
-- a) ![Relationship between original price & discount percentage](Images/relationship_between_original_price_and_discount_percentage.png)
+- a) ![Relationship between original price & discount percentage](<Images/Relationship  Between Original price & Discount percentage.png>)
 
 
      - The correlation between product price and discount percentage is very weak (0.0758), indicating no strong link between higher prices and higher discounts. This suggests that discount strategies are largely independent of product price in this dataset.
@@ -89,10 +89,10 @@
      - Groceries have the lowest discounts, reflecting their smaller profit margins.
      - Other categories like Fashion, Computing, and Health & Beauty maintain moderate discounts (20–40%), suggesting similar pricing strategies across these segments.
 
-- c) ![Discount by Price Range](Images/discount_by_price_range.png)
+- c) ![Discount by Price Range](<Images/Discount by price range.png>)
      - Discounts remain fairly consistent across all price ranges. Whether products are low, mid, or high priced, they receive similar discount percentages, which is unexpected, as higher-priced items are often assumed to have larger discounts.
 
-- d) ![Discount by Ratings](Images/discount_by_ratings.png)
+- d) ![Discount by Ratings](<Images/Discount by Ratings.png>)
 
 
 
@@ -161,10 +161,10 @@ Overall, competitiveness varies widely across categories, showing that strong pe
 - There’s no clear link between price and ratings, indicating that expensive products don’t necessarily receive better reviews. 
 - While discounted products may attract slightly more ratings, the effect is minimal. As expected, products with more reviews tend to have slightly higher average ratings.
 
-![Correlation between Numeric Variables](Images/correlation_matrix.png)
+![Correlation between Numeric Variables](<Images/Correlation Matrix.png>)
 
 
-- For more detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb notebook]()
+- For more detailed breakdown of the analysis, please refer to the full notebook: [Price_Optimization.ipynb]()
 
 # Key Insights
 
